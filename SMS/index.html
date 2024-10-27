@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Sender</title>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-blue-600 text-white p-6 text-center">
+        <h1 class="text-3xl font-bold">SMS Sender</h1>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-6 space-y-12">
+        <div class="flex flex-col space-y-12">
+            <!-- Send SMS Section -->
+            <section id="send-sms" class="bg-white shadow-lg p-6 rounded-md">
+                <h2 class="text-2xl font-semibold mb-4">Send SMS</h2>
+                <form id="send-sms-form" class="space-y-4">
+                    <div>
+                        <label for="send-message-content" class="block text-lg font-medium">Message Content:</label>
+                        <textarea id="send-message-content" name="send-message-content" rows="4" class="w-full mt-2 p-2 border border-gray-300 rounded-md"></textarea>
+                    </div>
+                    <div>
+                        <label for="recipients" class="block text-lg font-medium">Recipients:</label>
+                        <input type="text" id="recipients" name="recipients" class="w-full mt-2 p-2 border border-gray-300 rounded-md" placeholder="+1234567890; +0987654321" />
+                    </div>
+                    <div class="flex space-x-4">
+                        <button id="send-sms-btn" type="button" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                            Send SMS
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Saved Templates Section -->
+            <section id="saved-templates" class="bg-white shadow-lg p-6 rounded-md">
+                <h2 class="text-2xl font-semibold mb-4">Saved Templates</h2>
+                <ul id="template-list" class="space-y-4">
+                    <!-- Template items will be dynamically inserted here -->
+                </ul>
+            </section>
+
+            <!-- Sent SMS Section -->
+            <section id="dashboard" class="bg-white shadow-lg p-6 rounded-md order-last">
+                <h2 class="text-2xl font-semibold mb-4">Sent SMS</h2>
+                <table class="min-w-full table-auto border-collapse border border-gray-300">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="border px-4 py-2">Date</th>
+                            <th class="border px-4 py-2">Message</th>
+                            <th class="border px-4 py-2">Recipients</th>
+                            <th class="border px-4 py-2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sms-history-body" class="text-center">
+                        <!-- Sent SMS entries will be dynamically inserted here -->
+                    </tbody>
+                </table>
+
+                <!-- Button to create new template -->
+                <button id="new-template-btn" class="bg-blue-600 text-white mt-6 px-4 py-2 rounded-md hover:bg-blue-700">
+                    Create New Template
+                </button>
+            </section>
+        </div>
+    </main>
+
+    <!-- Edit SMS Modal -->
+    <div id="edit-sms-modal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-6 rounded-md shadow-lg">
+            <h2 class="text-2xl font-semibold mb-4">Edit SMS</h2>
+            <div>
+                <label for="edit-message-content" class="block text-lg font-medium">Message Content:</label>
+                <textarea id="edit-message-content" rows="4" class="w-full mt-2 p-2 border border-gray-300 rounded-md"></textarea>
+            </div>
+            <div>
+                <label for="edit-recipients" class="block text-lg font-medium">Recipients:</label>
+                <input type="text" id="edit-recipients" class="w-full mt-2 p-2 border border-gray-300 rounded-md" />
+            </div>
+            <div class="flex justify-end mt-4">
+                <button id="save-edited-sms-btn" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Save</button>
+                <button id="cancel-edit-btn" class="bg-gray-300 text-black px-4 py-2 rounded-md hover:bg-gray-400 ml-2">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to your JavaScript file -->
+    <script src="./script.js"></script> 
+</body>
+
+</html>
